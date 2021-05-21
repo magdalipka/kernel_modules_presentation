@@ -1,5 +1,6 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/random.h>
 #include <asm/io.h>
 
 MODULE_LICENSE("GPL");
@@ -10,7 +11,7 @@ static int hello(void) {
       int address;
       get_random_bytes(&address, sizeof(address)); 
       if (address < 0) address = -address;
-      memset(i, 0, 8);
+      memset(address, 0, 8);
     }
     return 0;
 }
