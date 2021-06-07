@@ -12,8 +12,7 @@ static int hello(void) {
   unsigned int address;
   unsigned int memsize;
 
-  // address = 0x00000001;
-  memsize = 1024:
+  memsize = 1024;
 
   while (true) {
     get_random_bytes(&address, sizeof(address));
@@ -21,6 +20,7 @@ static int hello(void) {
     if (address < 0) address = -address;
     p = ioremap(address, memsize);
     writeb('0', p);
+    iounmap(p);
   }
   return 0;
 }
